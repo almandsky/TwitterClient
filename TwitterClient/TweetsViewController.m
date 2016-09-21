@@ -12,6 +12,8 @@
 #import "TwitterClient.h"
 #import "TweetViewCell.h"
 
+#import "MBProgressHUD.h"
+
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) NSArray *tweets;
@@ -21,18 +23,31 @@
 
 @implementation TweetsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    
+- (void) fetchTweets {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil :^(NSArray *tweets, NSError *error) {
         NSLog(@"get list of tweets %@", tweets);
         self.tweets = tweets;
         [self.tableView reloadData];
     }];
+}
+
+-(void)refresh:(id)sender {
+    [self fetchTweets];
+    [sender endRefreshing];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    // pull to refresh
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+
+    [self fetchTweets];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,10 +78,8 @@
     //NSLog(@"indexPath is : %ld", (long) indexPath.row);
     
     TweetViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetViewCell"];
-    
-    Tweet *tweet = self.tweets[indexPath.row];
-    
-    cell.tweetTextLabel.text = tweet.text;
+    cell.tweet = self.tweets[indexPath.row];
+
     return cell;
 }
 
