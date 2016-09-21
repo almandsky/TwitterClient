@@ -7,6 +7,9 @@ target 'TwitterClient' do
 
   # Pods for TwitterClient
   pod "BDBOAuth1Manager"
+  pod 'DateTools'
+  pod 'MBProgressHUD', '~> 0.9'
+  pod 'AFNetworking'
 
   target 'TwitterClientTests' do
     inherit! :search_paths
