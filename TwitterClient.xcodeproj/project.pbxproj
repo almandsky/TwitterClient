@@ -21,6 +21,9 @@
 		0913A3C01D912B6400E924CF /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A3BF1D912B6400E924CF /* TweetsViewController.m */; };
 		0913A3C41D91363300E924CF /* TweetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A3C31D91363300E924CF /* TweetViewCell.m */; };
 		0913A3CA1D91992C00E924CF /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A3C91D91992C00E924CF /* Consts.m */; };
+		0913A3CC1D927F3700E924CF /* iconmonstr-edit-6-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A3CB1D927F3700E924CF /* iconmonstr-edit-6-24.png */; };
+		0913A3CF1D92813F00E924CF /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A3CE1D92813F00E924CF /* ComposeViewController.m */; };
+		0913A3D11D9281C200E924CF /* iconmonstr-x-mark-1-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A3D01D9281C200E924CF /* iconmonstr-x-mark-1-16.png */; };
 		452969AA5D0A4D1F3DA4AE23 /* libPods-TwitterClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B694503D90104399329977DC /* libPods-TwitterClient.a */; };
 		A8DAC2E9985B468A0A16B5CC /* libPods-TwitterClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3ABC9E2E100A68739DF4E3 /* libPods-TwitterClientTests.a */; };
 		E92FEFF209D32BFA2982D8C1 /* libPods-TwitterClientUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE31ED5B8BD91E4D05F52252 /* libPods-TwitterClientUITests.a */; };
@@ -72,6 +75,10 @@
 		0913A3C31D91363300E924CF /* TweetViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewCell.m; sourceTree = "<group>"; };
 		0913A3C81D91992C00E924CF /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
 		0913A3C91D91992C00E924CF /* Consts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consts.m; sourceTree = "<group>"; };
+		0913A3CB1D927F3700E924CF /* iconmonstr-edit-6-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-edit-6-24.png"; sourceTree = "<group>"; };
+		0913A3CD1D92813F00E924CF /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		0913A3CE1D92813F00E924CF /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		0913A3D01D9281C200E924CF /* iconmonstr-x-mark-1-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-x-mark-1-16.png"; sourceTree = "<group>"; };
 		381EC302EA3CA49332581E41 /* Pods-TwitterClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClientTests/Pods-TwitterClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		578E47EAF7F351FF0EAC06EF /* Pods-TwitterClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.release.xcconfig"; sourceTree = "<group>"; };
 		77769BD3161D4872CC5BE61B /* Pods-TwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +164,8 @@
 		0913A37A1D9094DB00E924CF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0913A3D01D9281C200E924CF /* iconmonstr-x-mark-1-16.png */,
+				0913A3CB1D927F3700E924CF /* iconmonstr-edit-6-24.png */,
 				0913A37B1D9094DB00E924CF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -207,6 +216,8 @@
 				0913A3BF1D912B6400E924CF /* TweetsViewController.m */,
 				0913A3801D9094DB00E924CF /* ViewController.h */,
 				0913A3811D9094DB00E924CF /* ViewController.m */,
+				0913A3CD1D92813F00E924CF /* ComposeViewController.h */,
+				0913A3CE1D92813F00E924CF /* ComposeViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -348,6 +359,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0913A3D11D9281C200E924CF /* iconmonstr-x-mark-1-16.png in Resources */,
+				0913A3CC1D927F3700E924CF /* iconmonstr-edit-6-24.png in Resources */,
 				0913A38A1D9094DB00E924CF /* LaunchScreen.storyboard in Resources */,
 				0913A3871D9094DB00E924CF /* Assets.xcassets in Resources */,
 				0913A3851D9094DB00E924CF /* Main.storyboard in Resources */,
@@ -501,6 +514,7 @@
 				0913A3B71D90D50400E924CF /* User.m in Sources */,
 				0913A3821D9094DB00E924CF /* ViewController.m in Sources */,
 				0913A3BA1D90D56800E924CF /* Tweet.m in Sources */,
+				0913A3CF1D92813F00E924CF /* ComposeViewController.m in Sources */,
 				0913A3CA1D91992C00E924CF /* Consts.m in Sources */,
 				0913A37F1D9094DB00E924CF /* AppDelegate.m in Sources */,
 				0913A3BD1D9104CD00E924CF /* TwitterClient.m in Sources */,

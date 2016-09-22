@@ -64,10 +64,10 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)onLogout:(UIButton *)sender {
+
+- (IBAction)onLogout:(UIBarButtonItem *)sender {
     [[User currentUser] logout];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.tweets.count;
