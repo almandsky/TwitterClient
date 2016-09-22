@@ -18,4 +18,8 @@
 
 - (void) homeTimelineWithParams: (NSDictionary *) params : (void (^)(NSArray *tweets, NSError *error)) completion;
 
+- (void) tweetWithStringParams: (NSDictionary *) params : (NSString *) tweetStr : (void (^)(NSString *id_str, NSError *error)) completion;
+
+- (void) tweetWithString: (NSDictionary *) params : (NSString *) tweetStr : (void (^)(Tweet *tweet, NSError *error)) completion;
+
 @end

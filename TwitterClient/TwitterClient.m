@@ -92,4 +92,49 @@
     }];
 }
 
+- (void) tweetWithStringParams: (NSDictionary *) params : (NSString *) tweetStr : (void (^)(NSString *id_str, NSError *error)) completion{
+
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweetStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    NSLog(@"post URL is %@", postUrl);
+    
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSLog(@"constructingBodyWithBlock");
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"post tweet in progress");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"post request success");
+        //Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        //NSString *id = responseObject[@"id_str"];
+        NSString *id = [NSString stringWithFormat:@"%@", responseObject[@"id_str"]];
+        completion(id, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"post tweet failed. error: %@", error);
+        completion(nil, error);
+    }];
+}
+
+- (void) tweetWithString: (NSDictionary *) params : (NSString *) tweetStr : (void (^)(Tweet *tweet, NSError *error)) completion{
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweetStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    NSLog(@"post URL is %@", postUrl);
+    
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSLog(@"constructingBodyWithBlock");
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"post tweet in progress");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"post request success");
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        //NSString *id = responseObject[@"id_str"];
+        //NSString *id = [NSString stringWithFormat:@"%@", responseObject[@"id_str"]];
+        completion(newTweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"post tweet failed. error: %@", error);
+        completion(nil, error);
+    }];
+}
+
 @end
