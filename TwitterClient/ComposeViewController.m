@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "TwitterClient.h"
 
+
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusViewBottom;
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *statusView;
 @property (weak, nonatomic) IBOutlet UILabel *remainCharLabel;
 @property (nonatomic, assign) BOOL canTweet;
+
 
 @end
 
@@ -45,7 +47,34 @@
     self.tweetButton.layer.borderColor=[[UIColor lightGrayColor] CGColor];
     self.tweetButton.layer.cornerRadius = 5;
     
+    
+    // set the reply tweet
+    
+    if (self.replyTweet != nil) {
+        NSLog(@"got reply tweet %@", self.replyTweet.text);
+        
+    } else {
+        NSLog(@"normal compose tweet");
+    }
+    
+    
     self.canTweet = NO;
+    
+    
+    if (self.replyTweet) {
+        // if replying to a retweet, mention original tweet author and retweeter
+        if (self.replyTweet.retweetedStatus) {
+            if ([self.replyTweet.user.screenname isEqualToString:[[User currentUser] screenname]]) {
+                self.tweetTextView.text = [NSString stringWithFormat:@"@%@ ", self.replyTweet.retweetedStatus.user.screenname];
+            } else {
+                self.tweetTextView.text = [NSString stringWithFormat:@"@%@ @%@ ", self.replyTweet.retweetedStatus.user.screenname, self.replyTweet.user.screenname];
+            }
+        } else {
+            self.tweetTextView.text = [NSString stringWithFormat:@"@%@ ", self.replyTweet.user.screenname];
+        }
+    }
+    
+    [self textViewDidChange:self.tweetTextView];
     
     [self.tweetTextView becomeFirstResponder];
     
@@ -151,26 +180,31 @@
     NSLog(@"tweet button clicked");
     // post the tweet
     //Tweet *tweet = [[Tweet alloc] init
-    
+    /*
     [[TwitterClient sharedInstance] tweetWithStringParams:nil :self.tweetTextView.text :^(NSString *id_str, NSError *error) {
         if (id_str != nil) {
             // get new tweet
             NSLog(@"get new tweet id %@", id_str);
             [self.tweetTextView endEditing:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
+            if ([self.delegate respondsToSelector:@selector(didTweetSuccessfully)]) {
+                [self.delegate didTweetSuccessfully];
+            }
+            //[self.delegate didTweet:self.tweet];
         } else {
             NSLog(@"error posting tweet %@", error);
         }
     }];
+     */
      
-    /*
+    
     [[TwitterClient sharedInstance] tweetWithString:nil :self.tweetTextView.text :^(Tweet *tweet, NSError *error) {
         if (tweet != nil) {
             // get new tweet
             NSLog(@"get new tweet id %@", tweet.text);
             
             // add the new tweet to the home timeline
-            
+            [self.delegate didTweet:tweet];
             // dismiss the the compose screen
             [self.tweetTextView endEditing:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -178,7 +212,7 @@
             NSLog(@"error posting tweet %@", error);
         }
     }];
-     */
+    
     
 }
 

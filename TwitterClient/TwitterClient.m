@@ -78,12 +78,13 @@
     }];
 }
 
-- (void) homeTimelineWithParams: (NSDictionary *) params : (void (^)(NSArray *tweets, NSError *error)) completion {
+- (void) homeTimelineWithParams: (NSDictionary *) params : (void (^)(NSMutableArray *tweets, NSError *error)) completion {
+    self.requestSerializer.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"downloading home timeline");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //NSLog(@"home timeline is %@", responseObject);
-        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        // NSLog(@"home timeline is %@", responseObject);
+        NSMutableArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -96,17 +97,12 @@
 
     NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweetStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
     
-    NSLog(@"post URL is %@", postUrl);
-    
-    
     [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSLog(@"constructingBodyWithBlock");
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         NSLog(@"post tweet in progress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"post request success");
-        //Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
-        //NSString *id = responseObject[@"id_str"];
         NSString *id = [NSString stringWithFormat:@"%@", responseObject[@"id_str"]];
         completion(id, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -118,21 +114,100 @@
 - (void) tweetWithString: (NSDictionary *) params : (NSString *) tweetStr : (void (^)(Tweet *tweet, NSError *error)) completion{
     NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweetStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
     
-    NSLog(@"post URL is %@", postUrl);
-    
-    
     [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSLog(@"constructingBodyWithBlock");
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         NSLog(@"post tweet in progress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"post request success");
+        //NSLog(@"post request success, response is %@", responseObject);
         Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
-        //NSString *id = responseObject[@"id_str"];
-        //NSString *id = [NSString stringWithFormat:@"%@", responseObject[@"id_str"]];
         completion(newTweet, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"post tweet failed. error: %@", error);
+        completion(nil, error);
+    }];
+}
+
+
+- (void)retweetWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(Tweet *tweet, NSError *))completion {
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", [tweet.idStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //code
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //code
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // get success reponse
+        //NSLog(@"retweet sucess. result: %@", responseObject);
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(newTweet, nil);
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"retweet failed. error: %@", error);
+        completion(nil, error);
+    }];
+    
+}
+
+- (void)unretweetWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(Tweet *tweet, NSError *))completion {
+    
+    
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/statuses/unretweet/%@.json", [tweet.idStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    NSLog(@"unretweet post url is %@", postUrl);
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //code
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //code
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // get success reponse
+        //NSLog(@"unretweet sucess. result: %@", responseObject);
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(newTweet, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"unretweet failed. error: %@", error);
+        completion(nil, error);
+    }];
+    
+}
+
+- (void)favoriteWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/favorites/create.json?id=%@", [tweet.idStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //code
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //code
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // get success reponse
+        //NSLog(@"favorite sucess. result: %@", responseObject);
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(newTweet, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"favorite failed. error: %@", error);
+        completion(nil, error);
+    }];
+}
+
+
+- (void)unfavoriteWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
+    NSString *postUrl = [NSString stringWithFormat:@"1.1/favorites/destroy.json?id=%@", [tweet.idStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    
+    [self POST:postUrl parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //code
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //code
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // get success reponse
+        //NSLog(@"unfavorite sucess. result: %@", responseObject);
+        Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(newTweet, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"unfavorite failed. error: %@", error);
         completion(nil, error);
     }];
 }

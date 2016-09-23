@@ -21,8 +21,9 @@
 {
     [super layoutSubviews];
     if (self.tweet != nil) {
+        self.profileImage.image = nil;
         self.nameLabel.text = self.tweet.user.name;
-        self.screenNameLabel.text = self.tweet.user.screenname;
+        self.screenNameLabel.text = [NSString stringWithFormat:@"@%@",self.tweet.user.screenname];
         self.tweetTextLabel.text = self.tweet.text;
         self.dateLabel.text = [self.tweet.createdAt shortTimeAgoSinceNow];
         
