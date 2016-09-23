@@ -12,7 +12,7 @@ Time spent: xx hours spent in total
  * [x] Required: In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp. In other words, design the custom cell with the proper Auto Layout settings. You will also need to augment the model classes.
  * [x] Required: User can pull to refresh
  * [x] Required: User can compose a new tweet by tapping on a compose button.
- * [ ] Required: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
+ * [x] Required: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
  * [ ] Required: Hamburger menu - Dragging anywhere in the view should reveal the menu.
  * [ ] Required: Hamburger menu - The menu should include links to your profile, the home timeline, and the mentions view.
  * [ ] Required: Hamburger menu - The menu can look similar to the menu below or feel free to take liberty with the UI.
