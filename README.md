@@ -19,11 +19,11 @@ Time spent: xx hours spent in total
  * [ ] Required: Profile page - Contains the user header view (implemented as a custom view)
  * [ ] Required: Profile page - Contains a section with the users basic stats: # tweets, # following, # followers
  * [ ] Required: Home Timeline - Tapping on a user image should bring up that user's profile page
- * [ ] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
- * [ ] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
- * [ ] Optional: Retweeting and favoriting should increment the retweet and favorite count.
- * [ ] Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. 
- * [ ] Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+ * [x] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
+ * [x] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+ * [x] Optional: Retweeting and favoriting should increment the retweet and favorite count.
+ * [x] Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. 
+ * [x] Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
  * [ ] Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
  * [ ] Optional: Pulling down the profile page should blur and resize the header image.
  * [ ] Optional: Account switching - Long press on tab bar to bring up Account view with animation
