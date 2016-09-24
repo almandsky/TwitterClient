@@ -14,7 +14,15 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *screenname;
 @property (nonatomic, strong) NSString *profileImageUrl;
-@property (nonatomic, strong) NSString *tagline;
+@property (nonatomic, strong) NSString *profileBannerImageUrl;
+@property (nonatomic, strong) NSString *profileBgImageUrl;
+@property (nonatomic, strong) NSString *profileBgColor;
+
+
+@property (nonatomic, assign) int statusesCount;
+@property (nonatomic, assign) int followersCount;
+@property (nonatomic, assign) int favouritesCount;
+
 @property (nonatomic, strong) NSDictionary *dictionary;
 
 

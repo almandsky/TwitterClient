@@ -83,7 +83,7 @@
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"downloading home timeline");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // NSLog(@"home timeline is %@", responseObject);
+        NSLog(@"home timeline is %@", responseObject);
         NSMutableArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil);
         
@@ -182,7 +182,7 @@
         //code
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // get success reponse
-        //NSLog(@"favorite sucess. result: %@", responseObject);
+        NSLog(@"favorite sucess. result: %@", responseObject);
         Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
         completion(newTweet, nil);
         
@@ -202,7 +202,7 @@
         //code
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // get success reponse
-        //NSLog(@"unfavorite sucess. result: %@", responseObject);
+        NSLog(@"unfavorite sucess. result: %@", responseObject);
         Tweet *newTweet = [[Tweet alloc] initWithDictionary:responseObject];
         completion(newTweet, nil);
         

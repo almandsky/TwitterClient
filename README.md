@@ -1,8 +1,8 @@
 # TwitterClient
 
-Restful client for Twitter with Oauth 1.
+Restful client for Twitter with Twitter Oauth REST API.
 
-Time spent: xx hours spent in total
+Time spent: 35 hours spent in total
 
 ## Completed user stories:
 
@@ -13,12 +13,12 @@ Time spent: xx hours spent in total
  * [x] Required: User can pull to refresh
  * [x] Required: User can compose a new tweet by tapping on a compose button.
  * [x] Required: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
- * [ ] Required: Hamburger menu - Dragging anywhere in the view should reveal the menu.
- * [ ] Required: Hamburger menu - The menu should include links to your profile, the home timeline, and the mentions view.
- * [ ] Required: Hamburger menu - The menu can look similar to the menu below or feel free to take liberty with the UI.
- * [ ] Required: Profile page - Contains the user header view (implemented as a custom view)
- * [ ] Required: Profile page - Contains a section with the users basic stats: # tweets, # following, # followers
- * [ ] Required: Home Timeline - Tapping on a user image should bring up that user's profile page
+ * [x] Required: Hamburger menu - Dragging anywhere in the view should reveal the menu.
+ * [x] Required: Hamburger menu - The menu should include links to your profile, the home timeline, and the mentions view.
+ * [x] Required: Hamburger menu - The menu can look similar to the menu below or feel free to take liberty with the UI.
+ * [x] Required: Profile page - Contains the user header view (implemented as a custom view)
+ * [x] Required: Profile page - Contains a section with the users basic stats: # tweets, # following, # followers
+ * [x] Required: Home Timeline - Tapping on a user image should bring up that user's profile page
  * [x] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
  * [x] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
  * [x] Optional: Retweeting and favoriting should increment the retweet and favorite count.
@@ -44,13 +44,13 @@ open TwitterClient.xcworkspace
 
 Here's a walkthrough of implemented user stories:
 
-<!--img src='https://github.com/almandsky/flicksApp/raw/master/demo/flicksApp2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /-->
+<img src='https://github.com/almandsky/TwitterClient/raw/master/demo/twitter.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
- * To be provided
+ * To be provided.
 
 ## License
 

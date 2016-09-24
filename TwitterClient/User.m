@@ -24,8 +24,15 @@ static User *currentUser;
         
         self.name = dictionary[@"name"];
         self.screenname = dictionary[@"screen_name"];
-        self.profileImageUrl = dictionary[@"profile_image_url"];
-        self.tagline = dictionary[@"description"];
+        self.profileImageUrl = dictionary[@"profile_image_url_https"];
+        self.profileBannerImageUrl = dictionary[@"profile_banner_url"];
+        self.profileBgImageUrl = dictionary[@"profile_background_image_url_https"];
+        self.profileBgColor = dictionary[@"profile_background_color"];
+        
+        self.statusesCount = [dictionary[@"statuses_count"] intValue];
+        self.favouritesCount = [dictionary[@"favourites_count"] intValue];
+        self.followersCount = [dictionary[@"followers_count"] intValue];
+        
     }
     return self;
 }

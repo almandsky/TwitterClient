@@ -13,6 +13,9 @@
 #import "TweetViewCell.h"
 #import "TweetDetailViewController.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
+#import "MenuViewController.h"
+
 
 #import "MBProgressHUD.h"
 
@@ -69,9 +72,7 @@
 }
 */
 
-- (IBAction)onLogout:(UIBarButtonItem *)sender {
-    [[User currentUser] logout];
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.tweets.count;
@@ -82,7 +83,7 @@
     //NSLog(@"indexPath is : %ld", (long) indexPath.row);
     
     TweetViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetViewCell"];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    //[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.tweet = self.tweets[indexPath.row];
 
     return cell;
@@ -108,7 +109,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         TweetDetailViewController *vc = segue.destinationViewController;
         vc.tweet = self.tweets[indexPath.row];
-        self.selectedIndex = indexPath.row;
         vc.delegate = self;
         vc.navigationItem.rightBarButtonItems = self.navigationItem.rightBarButtonItems;
         // setup the delegate
@@ -122,6 +122,22 @@
         
         ComposeViewController *vc = nvc.childViewControllers[0];
         vc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"profileViewSegue"]) {
+        
+        TweetViewCell *cell = (TweetViewCell*) [[sender superview] superview];
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        Tweet *tweet = self.tweets[indexPath.row];
+        
+        UINavigationController *pnvc = segue.destinationViewController;
+        
+        
+        ProfileViewController *pvc = pnvc.childViewControllers[0];
+        
+        pvc.user = tweet.user;
+        
+
     }
 }
 
@@ -152,6 +168,76 @@
 - (void)didFavorite:(Tweet *)tweet {
     NSLog(@"didFavorite in tweets view");
     self.tweets[self.selectedIndex] = tweet;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedIndex = indexPath.row;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+/*
+- (IBAction)onProfileTap:(UITapGestureRecognizer *)sender {
+    
+    NSLog(@"profile tap");
+    //UINavigationController *nc = segue.destinationViewController;
+    //TrailerViewController *tvc = nc.viewControllers[0];
+    TweetViewCell *cell = (TweetViewCell*) [[sender superview] superview];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if(self.isFiltered)
+        tvc.movie = self.filteredTableData[indexPath.row];
+    else
+        tvc.movie = self.movies[indexPath.row];
+    
+}
+ */
+- (IBAction)onViewProfile:(UIButton *)sender {
+    NSLog(@"profile tap");
+    //UINavigationController *nc = segue.destinationViewController;
+    //TrailerViewController *tvc = nc.viewControllers[0];
+    
+    /*
+    UINavigationController *nc = segue.destinationViewController;
+    TrailerViewController *tvc = nc.viewControllers[0];
+    */
+    
+    TweetViewCell *cell = (TweetViewCell*) [[sender superview] superview];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    Tweet *tweet = self.tweets[indexPath.row];
+    
+    
+    
+    MenuViewController *mvc = self.menuViewController;
+    
+    UINavigationController *pnvc = mvc.profileNavigationController;
+     
+    
+    ProfileViewController *pvc = pnvc.childViewControllers[0];
+    
+    pvc.user = tweet.user;
+    
+    pvc.navigationItem.leftBarButtonItems = self.navigationItem.leftBarButtonItems;
+    pvc.navigationItem.rightBarButtonItems = self.navigationItem.rightBarButtonItems;
+    
+    
+    HamburgerViewController *hvc = mvc.hamburgerViewController;
+    
+    [hvc setContentViewController:pnvc];
+    
+    //[self.navigationController pushViewController:pvc animated:YES];
+    
+    
+    
+    //tvc.movie = self.movies[indexPath.row];
+}
+- (IBAction)onMenuClick:(UIBarButtonItem *)sender {
+    MenuViewController *mvc = self.menuViewController;
+    HamburgerViewController *hvc = mvc.hamburgerViewController;
+    
+    [hvc taggleMenu];
+    
 }
 
 @end

@@ -31,8 +31,13 @@
     if (user != nil) {
         //
         NSLog(@"current user detected %@", user.name);
+        /*
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"TweetsNavigationController"];
         self.window.rootViewController = vc;
+         */
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
+        self.window.rootViewController = vc;
+        
     }
 
     return YES;

@@ -36,6 +36,12 @@
 		0913A4431D93B6D800E924CF /* retweet-action.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A4381D93B6D800E924CF /* retweet-action.png */; };
 		0913A4441D93B6D800E924CF /* reply-action-pressed_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A4391D93B6D800E924CF /* reply-action-pressed_0.png */; };
 		0913A4451D93B6D800E924CF /* reply-action_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A43A1D93B6D800E924CF /* reply-action_0.png */; };
+		0913A4481D9583E700E924CF /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A4471D9583E700E924CF /* HamburgerViewController.m */; };
+		0913A44B1D95840000E924CF /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A44A1D95840000E924CF /* MenuViewController.m */; };
+		0913A44E1D95840900E924CF /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A44D1D95840900E924CF /* ContentViewController.m */; };
+		0913A4511D95BFCE00E924CF /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A4501D95BFCE00E924CF /* ProfileViewController.m */; };
+		0913A4541D95BFEA00E924CF /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0913A4531D95BFEA00E924CF /* MentionsViewController.m */; };
+		0913A4561D95F00000E924CF /* iconmonstr-menu-1-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0913A4551D95F00000E924CF /* iconmonstr-menu-1-24.png */; };
 		452969AA5D0A4D1F3DA4AE23 /* libPods-TwitterClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B694503D90104399329977DC /* libPods-TwitterClient.a */; };
 		A8DAC2E9985B468A0A16B5CC /* libPods-TwitterClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3ABC9E2E100A68739DF4E3 /* libPods-TwitterClientTests.a */; };
 		E92FEFF209D32BFA2982D8C1 /* libPods-TwitterClientUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE31ED5B8BD91E4D05F52252 /* libPods-TwitterClientUITests.a */; };
@@ -104,6 +110,17 @@
 		0913A4381D93B6D800E924CF /* retweet-action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-action.png"; sourceTree = "<group>"; };
 		0913A4391D93B6D800E924CF /* reply-action-pressed_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-action-pressed_0.png"; sourceTree = "<group>"; };
 		0913A43A1D93B6D800E924CF /* reply-action_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-action_0.png"; sourceTree = "<group>"; };
+		0913A4461D9583E700E924CF /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
+		0913A4471D9583E700E924CF /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
+		0913A4491D95840000E924CF /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		0913A44A1D95840000E924CF /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		0913A44C1D95840900E924CF /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		0913A44D1D95840900E924CF /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		0913A44F1D95BFCE00E924CF /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		0913A4501D95BFCE00E924CF /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		0913A4521D95BFEA00E924CF /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		0913A4531D95BFEA00E924CF /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		0913A4551D95F00000E924CF /* iconmonstr-menu-1-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-menu-1-24.png"; sourceTree = "<group>"; };
 		381EC302EA3CA49332581E41 /* Pods-TwitterClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClientTests/Pods-TwitterClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		578E47EAF7F351FF0EAC06EF /* Pods-TwitterClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.release.xcconfig"; sourceTree = "<group>"; };
 		77769BD3161D4872CC5BE61B /* Pods-TwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +206,7 @@
 		0913A37A1D9094DB00E924CF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0913A4551D95F00000E924CF /* iconmonstr-menu-1-24.png */,
 				0913A4301D93B6D800E924CF /* like-action-on.png */,
 				0913A4311D93B6D800E924CF /* like-action-on-pressed.png */,
 				0913A4321D93B6D800E924CF /* like-action-pressed.png */,
@@ -256,6 +274,16 @@
 				0913A3CE1D92813F00E924CF /* ComposeViewController.m */,
 				0913A42D1D935F0300E924CF /* TweetDetailViewController.h */,
 				0913A42E1D935F0300E924CF /* TweetDetailViewController.m */,
+				0913A4461D9583E700E924CF /* HamburgerViewController.h */,
+				0913A4471D9583E700E924CF /* HamburgerViewController.m */,
+				0913A4491D95840000E924CF /* MenuViewController.h */,
+				0913A44A1D95840000E924CF /* MenuViewController.m */,
+				0913A44C1D95840900E924CF /* ContentViewController.h */,
+				0913A44D1D95840900E924CF /* ContentViewController.m */,
+				0913A44F1D95BFCE00E924CF /* ProfileViewController.h */,
+				0913A4501D95BFCE00E924CF /* ProfileViewController.m */,
+				0913A4521D95BFEA00E924CF /* MentionsViewController.h */,
+				0913A4531D95BFEA00E924CF /* MentionsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -407,6 +435,7 @@
 				0913A43C1D93B6D800E924CF /* like-action-on-pressed.png in Resources */,
 				0913A43B1D93B6D800E924CF /* like-action-on.png in Resources */,
 				0913A4431D93B6D800E924CF /* retweet-action.png in Resources */,
+				0913A4561D95F00000E924CF /* iconmonstr-menu-1-24.png in Resources */,
 				0913A43D1D93B6D800E924CF /* like-action-pressed.png in Resources */,
 				0913A4451D93B6D800E924CF /* reply-action_0.png in Resources */,
 				0913A4411D93B6D800E924CF /* retweet-action-inactive.png in Resources */,
@@ -564,13 +593,18 @@
 				0913A3821D9094DB00E924CF /* ViewController.m in Sources */,
 				0913A3BA1D90D56800E924CF /* Tweet.m in Sources */,
 				0913A3CF1D92813F00E924CF /* ComposeViewController.m in Sources */,
+				0913A4511D95BFCE00E924CF /* ProfileViewController.m in Sources */,
+				0913A44B1D95840000E924CF /* MenuViewController.m in Sources */,
 				0913A3CA1D91992C00E924CF /* Consts.m in Sources */,
 				0913A37F1D9094DB00E924CF /* AppDelegate.m in Sources */,
 				0913A3BD1D9104CD00E924CF /* TwitterClient.m in Sources */,
+				0913A44E1D95840900E924CF /* ContentViewController.m in Sources */,
 				0913A37C1D9094DB00E924CF /* main.m in Sources */,
+				0913A4481D9583E700E924CF /* HamburgerViewController.m in Sources */,
 				0913A42F1D935F0300E924CF /* TweetDetailViewController.m in Sources */,
 				0913A3C41D91363300E924CF /* TweetViewCell.m in Sources */,
 				0913A3C01D912B6400E924CF /* TweetsViewController.m in Sources */,
+				0913A4541D95BFEA00E924CF /* MentionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
