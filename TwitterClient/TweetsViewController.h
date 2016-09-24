@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuViewController.h"
 
 @interface TweetsViewController : UIViewController
+
+@property (nonatomic, weak) MenuViewController * menuViewController;
 
 @end

@@ -21,7 +21,7 @@
         if (user != nil) {
             NSLog(@"Welcome to %@", user.name);
             // present the tweets view
-            [self performSegueWithIdentifier:@"loginSegue" sender: self];
+            [self performSegueWithIdentifier:@"loginSegue2" sender: self];
         } else {
             NSLog(@"failed to login with error %@", error);
         }

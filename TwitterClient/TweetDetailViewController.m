@@ -43,12 +43,10 @@
     self.navigationItem.title = @"Tweet";
     
     // setup the layout
-    self.statusView.layer.borderWidth = 0.5f;
+    self.statusView.layer.borderWidth = 1.0f;
     self.statusView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.actionView.layer.borderWidth = 0.5f;
+    self.actionView.layer.borderWidth = 1.0f;
     self.actionView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    
-    
     
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@",self.tweet.user.screenname];
@@ -196,6 +194,9 @@
             if (tweet != nil) {
                 NSLog(@"like success for id %@", tweet.idStr);
                 self.tweet = tweet;
+                if (tweet.favoriteCount == 0) {
+                    tweet.favoriteCount = 1;
+                }
                 [self updateTweet];
                 [self.delegate didFavorite:tweet];
             } else {
